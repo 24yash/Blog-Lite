@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %} {% endblock %}</title>
+  <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <style>
+    h1{
+      color: #0275d8;
+    }
+    label{
+      font-weight: bold;
+    }
+    a{
+      text-decoration: none;
+    }
+    body{
+      margin:2px;
+      text-align: center;
+      background-color: #f8f9fa;
+    }
+  </style>
+</head>
+<body>
+    {% block content %} {% endblock %}
+</body>
+</html>

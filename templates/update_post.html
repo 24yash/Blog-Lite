@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %} Update Post {% endblock %}
+{% block content %}
+	<div>
+	<h1>Update Post</h1>
+	</div>
+  
+    <div>
+	<form action='/update_post/{{id}}/{{password}}/{{post.id}}' method='POST'>
+		<label>New Title</label>
+		<br>
+		<input type="text" name="title" id="title">
+		<br>
+		<br>
+
+		<label>New Image URL</label>
+		<br>
+		<input type="text" name="image", id="image">
+		<br>
+		<br>
+	
+		<label>New Content</label>
+		<br>
+		<textarea name="content" id="content" cols="30" rows="10"></textarea>
+		<br>
+		<input style="margin-bottom:4px;"class="btn btn-primary" type="submit" value='Update Post' id="update_post">
+  	</form>
+  
+  	<form action='/view_post/{{id}}/{{password}}/{{post_id}}'>
+  		<input class="btn btn-primary" type="submit" value="Cancel">
+  	</form>
+  	
+  	<br>
+    </div>
+{% endblock %}

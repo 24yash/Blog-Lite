@@ -1,0 +1,122 @@
+openapi: 3.0.0
+info:
+  title: Blog Lite Application
+  description: API Documentation for MAD 1 project 'Blog Lite'
+  version: 1.0.0
+servers:
+  - url: http://127.0.0.1:5000
+paths:
+  /all_post:
+    get:
+      description: Operation to Read Posts.
+      responses:
+        '200':
+          description: Request Successful
+          content:
+            application/json:
+              schema:
+                  title: Posts
+                  type: object
+                  properties:
+                    "1":
+                      type: string
+                      example: first
+                    "2":
+                      type: string
+                      example: random
+        '500':
+          description: Internal Server Error
+        '404':
+          description: Category not found
+
+  
+  /api_post/{post_id}:
+    get:
+      description: Operation to Read a Post.
+      parameters:
+        - in: path
+          name: post_id
+          required: true
+          schema:
+            type: integer
+            example: 11
+      responses:
+        '200':
+          description: Request Successful
+          content:
+            application/json:
+              schema:
+                title: Post object
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 11
+                  title:
+                    type: string
+                    example: random
+                  creator:
+                    type: string
+                    example: admin
+                  content:
+                    type: string
+                    example: this is a post
+        '500':
+          description: Internal Server Error
+        '404':
+          description: Category not found
+    put:
+      description: Operation to update the Post.
+      parameters:
+        - in: path
+          name: post_id
+          required: true
+          schema:
+            type: integer
+            example: 11
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                post_title:
+                  type: string
+                  example: Random
+                post_content:
+                  type: string
+                  example: New Content
+      responses:
+        '201':
+          description: Successfuly updated
+        '404':
+          description: Post not found
+        '500':
+          description: Internal Server Error
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_code:
+                    type: string
+                  error_message:
+                    type: string
+                    
+    delete:
+      description: Operation to delete post
+      parameters:
+      - name: post_id
+        in: path
+        description: Post id to delete
+        required: true
+        schema:
+          type: integer
+          example: 11
+      responses:
+        '201':
+          description: Successfuly deleted
+        '400':
+          description: Invalid Post Id

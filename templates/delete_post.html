@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %} Delete {{post.title}} {% endblock %}
+{% block content %}
+    <br>
+    <form action="/delete_post/{{id}}/{{password}}/{{post.id}}" method="POST">
+        <label>Confirm Delete Post</label> <br>
+        <input class="btn btn-primary" type="submit" name="confirm" value="Confirm">
+    </form> <br>
+    <form action='/view_post/{{id}}/{{password}}/{{post.id}}'>
+        <input class="btn btn-primary" type="submit" value="Cancel">
+    </form>
+    <br>
+    </div>
+{% endblock %}

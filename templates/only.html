@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %} Home Page {% endblock %}
+{% block content %}
+  <div>
+		<form style="position: absolute; right: 90px; padding:5px;" action="/feed/{{id}}/{{password}}" method='POST'>
+			<input type="text" name="username", id="username" placeholder="Search a user" required>
+			<input class="btn btn-primary" type="submit" value="Search">
+		</form>
+		<form style="position: absolute; left: 0; padding:5px;" action="/feed/{{id}}/{{password}}">
+			<input class="btn btn-primary" type="submit" value="Filter Posts by All">
+		</form>
+		<form style="position: absolute; right: 0; padding:5px;" action="/">
+			<input class="btn btn-primary" type="submit" value="Log Out" name="LoggedOut">
+		</form>
+		<br>
+		{% if posts|length < 1 %}
+			<br>
+			<h1> No Posts. Let's start by making one!</h1>
+		{% else %}
+		<h1 style='text-align: center; color:#0275d8;'> Posts </h1>
+		<table class="table table-hover">
+			<tr class="table-primary">
+				<th scope="col">TITLE</th>
+				<th scope="col">DATE OF CREATION</th>
+				<th scope="col">CREATOR</th>
+				<th scope="col">POST</th>
+			</tr>
+
+			{% for post in posts %}
+				<tr>
+					<td>{{ post.title }}</td>
+					<td>{{ post.date_created.date() }}</td>
+					<td><a href='/view_user/{{id}}/{{password}}/{{post.user_id}}'>{{ post.creator}}</a></td>
+					<td><a href='/view_post/{{id}}/{{password}}/{{post.id}}'>View Post</a></td>
+				</tr>
+			{% endfor %}
+
+		</table>
+		{% endif %}
+		<br>
+		<form style="position: absolute; left: 0; padding:5px;" action="/create_post/{{id}}/{{password}}">
+			<input class="btn btn-primary" type="submit" value="Create a New Post!" name="new_post">
+		</form>
+        <form style="position: absolute; right: 0; padding:5px;" action="/update_name/{{id}}/{{password}}">
+			<input class="btn btn-primary" type="submit" value="Account Details" name="update_account">
+		</form> <br> <br>
+		<form style="position: absolute; left: 0; padding:5px;" action="/view_user/{{id}}/{{password}}/{{id}}">
+			<input class="btn btn-primary" type="submit" value="My Profile" name="profile">
+		</form>
+	</div>
+{% endblock %}

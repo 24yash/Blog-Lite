@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %} Delete Account {% endblock %}
+{% block content %}
+  <div>
+	<h1>Delete Account</h1>
+  </div>
+
+  <div>
+  	<form action='/delete_user/{{id}}/{{password}}' method='POST'>
+  		<label>Enter Password to Confirm</label> <br>
+  		<input type="password" name="password", id="password" required> <br>
+  		<input style="margin:3px 0 6px 0;" class="btn btn-primary" type="submit" value='Confirm' id="Confirm">
+  	</form>
+  	  
+  	<form action='/update_name/{{id}}/{{password}}'>
+  		<input class="btn btn-primary" type="submit" value="Cancel" id="Feed">
+  	</form>
+  </div>
+{% endblock %}

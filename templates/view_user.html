@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %} {{creator}} {% endblock %}
+{% block content %}
+  <div>
+	<h1 style="padding:5px;">{{ creator }}</h1>
+	<h5>Number of Posts: {{ count }}</h5>
+    <h5 style="display: inline; margin:13px;">Followers: <a href="/user_followers/{{id}}/{{password}}/{{req_id}}">{{ number_followers }}</a></h5>
+    <h5 style="display: inline; margin:13px;">Following: <a href="/user_following/{{id}}/{{password}}/{{req_id}}">{{ number_followed }}</a></h5>
+	{%if number==1%}
+	<form action="/view_user/{{id}}/{{password}}/{{req_id}}" method="POST">
+		<input class="btn btn-primary" type="Submit" name="Unfollow" value="Unfollow">
+	</form>	
+	{%endif%}
+	{%if number==2%}
+	<form action="/view_user/{{id}}/{{password}}/{{req_id}}" method="POST">
+		<input class="btn btn-primary" type="Submit" name="Follow" value="Follow">
+	</form>	
+	{%endif%}
+	<br>
+	<h1 style='text-align: center'> Posts </h1>
+		<table class="table">
+			<tr>
+				<th scope="col">TITLE</th>
+				<th scope="col">DATE OF CREATION</th>
+				<th scope="col">POST</th>
+			</tr>
+
+			{% for post in post %}
+				<tr>
+					<td>{{ post.title }}</td>
+					<td>{{ post.date_created.date() }}</td>
+					<td><a href='/view_post/{{id}}/{{password}}/{{post.id}}'>View Post</a></td>
+				</tr>
+			{% endfor %}
+
+		</table>
+		
+		<br>
+		<br>
+	</div>
+  	<form action='/feed/{{id}}/{{password}}'>
+  		<input class="btn btn-primary" type="submit" value="Feed" id="cancelfollow">
+	</form>
+{% endblock %}

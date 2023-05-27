@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %} {{post.title}} {% endblock %}
+{% block content %}
+  <div class="post_info">
+	<h1 style="text-align:center;"> {{post.title}}</h1>
+	<h5>by <a href="/view_user/{{user_id}}/{{password}}/{{post.user_id}}">{{post.creator}}</a></h5>
+    {% if post.image %}
+    <img style="padding:10px; height: 300px; width:300px;" src="{{post.image}}" alt="Invalid Image URL">
+    {% endif %}
+	<p style="padding:10px;"> {{post.content}} </p>
+	{%if number>0%}
+		<form style="margin:3px;" action="/delete_post/{{ user_id }}/{{ password }}/{{post.id}}">
+			<input class="btn btn-primary" type="submit" value="Delete" name="Delete">
+		</form>
+		<form style="margin:3px;" action="/update_post/{{ user_id }}/{{ password }}/{{post.id}}">
+			<input class="btn btn-primary" type="submit" value="Update" name="Update">
+		</form>
+	{%endif%}
+	<form style="margin:3px;" action="/feed/{{ user_id }}/{{ password }}">
+		<input class="btn btn-primary" type="submit" value="Feed" name="back">
+	</form>
+	</div style="margin-bottom: 6px;">
+{% endblock %}

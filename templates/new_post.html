@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %} New Post {% endblock %}
+{% block content %}
+  <div>
+	<h1>New Post</h1>
+  </div>
+  
+  <div>
+  	<form action='/create_post/{{id}}/{{password}}' method='POST'>
+  		<label>Title (Required)</label>
+  		<br>
+  		<input type="text" name="title" id="title" required>
+  
+  		<br>
+  		<br>
+
+      <label>Image URL</label>
+  		<br>
+  		<input type="text" name="image", id="image">
+
+      <br>
+      <br>
+  
+  		<label>Content</label>
+  		<br>
+  		<textarea name="content" id="content" cols="30" rows="10"></textarea><br>
+  		<input style="margin-bottom:3px;" class="btn btn-primary" type="submit">
+  	</form>
+  
+  	<form action='/feed/{{id}}/{{password}}'>
+  		<input class="btn btn-primary" type="submit" value="Cancel" id="cancelpost">
+  	</form>
+  	
+  	<br>
+  </div>
+{% endblock %}

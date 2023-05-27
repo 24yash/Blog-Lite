@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %} SignUp {% endblock %}
+{% block content %}
+  <div>
+	  <h1>Sign Up</h1>
+  </div>
+
+  <div>
+  	<form action='/signup' method='POST'>
+  		<label>Username</label>
+  		<br>
+  		<input type="email" name="Email" id="Email" required>
+  
+  		<br>
+  		<br>
+  
+  		<label>Password</label>
+  		<br>
+  		<input type="text" name="password", id="password" required> <br>
+  		<input style="margin-top:5px;" class="btn btn-primary" type="submit" value='Create Account' id="create">
+  	</form>
+  	
+  	<br>
+  
+  	<form action='/'>
+  		<input class="btn btn-primary" type="submit" value="Already have an account?" id="login">
+  	</form>
+  </div>
+  {% endblock %}
